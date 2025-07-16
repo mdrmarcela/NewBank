@@ -20,6 +20,3 @@ class Titular(Base):
         self.nome = nome
         self.endereco = endereco
 
-
-historico = relationship("Historico", uselist=False,
-                         back_populates="titular", cascade="all, delete-orphan")

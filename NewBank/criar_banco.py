@@ -5,4 +5,4 @@ engine = create_engine('sqlite:///banco.db')
 
 Base.metadata.create_all(engine)
 
-print("Banco criado com sucesso!")
+print("Banco criado")

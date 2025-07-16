@@ -12,7 +12,6 @@ from repositorio import (
     buscar_conta_por_id
 )
 
-
 def detectar_idioma_padrao():
     return locale.getdefaultlocale()[0] or "pt_BR"
 
@@ -188,3 +187,10 @@ class BancoApp:
 
         ttk.Button(janela, text=self._("Buscar"),
                    bootstyle="primary", command=buscar).pack(pady=20)
+        
+
+if __name__ == "__main__":
+    root = ttk.Window(themename="darkly")  
+    app = BancoApp(root)
+    root.mainloop()
+

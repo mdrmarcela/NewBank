@@ -5,7 +5,6 @@ from datetime import datetime
 
 Base = declarative_base()
 
-
 class Conta(Base):
     __tablename__ = 'contasalario'
     numero = Column(Integer, ForeignKey('conta.numero'), primary_key=True)

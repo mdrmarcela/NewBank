@@ -33,48 +33,6 @@ class Historico(Base):
             resultados = [op for op in resultados if op.valor == valor]
         return resultados
 
-    def gerar_pdf(self, nome_arquivo="extrato.pdf", idioma="pt"):
-        traduzir = get_tradutor(idioma)
-        c = canvas.Canvas(nome_arquivo, pagesize=A4)
-        largura, altura = A4
-        y = altura - 50
-
-        c.setFont("Helvetica-Bold", 16)
-        c.drawString(50, y, traduzir("Extrato Bancário"))
-        y -= 30
-
-        c.setFont("Helvetica", 12)
-        c.drawString(50, y, f"{traduzir('Titular')}: {self.titular.nome}")
-        y -= 20
-
-        for op in self.operacoes:
-            linha = f"{op.data.strftime('%d/%m/%Y %H:%M')} - {traduzir(op.descricao)} - R${op.valor:.2f}"
-            c.drawString(50, y, linha)
-            y -= 20
-            if y < 50:
-                c.showPage()
-                y = altura - 50
-
-        c.save()
-        print(f"{traduzir('PDF gerado em')}: {os.path.abspath(nome_arquivo)}")
-
-
-def get_tradutor(idioma):
-    traducoes = {
-        'pt': lambda texto: texto,
-        'en': lambda texto: {
-            "Extrato Bancário": "Bank Statement",
-            "Titular": "Account Holder",
-            "PDF gerado em": "PDF generated at"
-        }.get(texto, texto),
-        'es': lambda texto: {
-            "Extrato Bancário": "Extracto Bancario",
-            "Titular": "Titular",
-            "PDF gerado em": "PDF generado en"
-        }.get(texto, texto),
-    }
-    return traducoes.get(idioma, traducoes['pt'])
-
 
 def gerar_pdf(self, nome_arquivo="extrato.pdf", idioma="pt"):
     traduzir = get_tradutor(idioma)

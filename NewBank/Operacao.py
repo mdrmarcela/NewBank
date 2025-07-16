@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime
 from sqlalchemy.orm import relationship, declarative_base
-from Conta import Conta  # Só mantenha isso se a importação circular não for um problema
+from Conta import Conta  
 
 Base = declarative_base()
 

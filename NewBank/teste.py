@@ -6,7 +6,7 @@ engine = create_engine('sqlite:///banco.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-titular = Titular(nome="João da Silva", endereco="Rua A")
+titular = Titular(nome="Fulana", endereco="Rua Bala de iogurte")
 session.add(titular)
 session.commit()
 

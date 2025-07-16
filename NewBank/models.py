@@ -23,7 +23,7 @@ class Conta(Base):
     numero = Column(Integer, primary_key=True)
     saldo = Column(Float)
     titular_id = Column(Integer, ForeignKey('titular.id'))
-    tipo = Column(String)  # Usado para herança (ContaCorrente, Poupanca etc.)
+    tipo = Column(String)  
 
     titular = relationship("Titular", back_populates="contas")
 

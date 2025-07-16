@@ -2,14 +2,19 @@ from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boo
 from datetime import datetime
 from sqlalchemy.orm import relationship, declarative_base
 
+Base = declarative_base()
 
-class Titular:
+
+class Titular(Base):
+    __tablename__ = 'titular'
+
+    id = Column(Integer, primary_key=True)
+    nome = Column(String)
+    endereco = Column(String)
+
     def __init__(self, nome: str, endereco: str):
         self.nome = nome
         self.endereco = endereco
-
-
-Base = declarative_base()
 
 
 class Conta(Base):
